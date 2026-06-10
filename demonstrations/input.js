@@ -31,3 +31,4 @@ main();
 
 // quite a bit of work to get input to work :(
 // this is why java/python may be better for this specifically but that isn't totally necessary
+// see how well html/css/JS can be taught within a decent time & go from there, leave this for later
