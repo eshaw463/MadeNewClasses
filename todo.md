@@ -2,7 +2,6 @@
 original: 
 - look over lesson plans & adapt them to a more accessible format (doc w/ tabs?)
 - add img tags to sample projects/ curriculum
-- add box for "what if multiple of the same order?"
 
 demonstrations:
 - decide if any extra are necessary or helpful
