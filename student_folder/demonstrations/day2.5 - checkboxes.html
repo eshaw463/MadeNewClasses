@@ -1,0 +1,25 @@
+<ul>
+    <li>
+        <label>
+            <input type="checkbox" data-name="Garlic Bread" data-price="4.99">
+            Garlic Bread — $4.99
+        </label>
+    </li>
+    <li>
+        <label>
+            <input type="checkbox" data-name="Bruschetta" data-price="6.99">
+            Bruschetta — $6.99
+        </label>
+    </li>
+</ul>
+
+<script> //use showOrder in the console on this page opened in live server
+function showOrder() {
+    let checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    checked.forEach(
+        function(box) {
+           console.log(box.dataset.name, box.dataset.price);
+        }
+    );
+}
+</script>

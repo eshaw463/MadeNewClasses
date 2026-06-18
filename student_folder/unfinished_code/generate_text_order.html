@@ -1,0 +1,51 @@
+<button id="generate-btn"> <!-- include onclick function for generate text order (found below) -->
+  📱 Create My Text Order
+</button>
+
+<textarea id="text-order" rows="10" style="display:none; width:100%;"></textarea>
+<button id="copy-btn" style="display:none;" onclick="copyOrder()">
+  Copy to Clipboard
+</button>
+
+<script>
+  let placeholder = 0;
+
+  function generateTextOrder() {
+    let checked = placeholder; /*query to select all checked items in document *hint* we did this before*/
+    if (checked.length === 0) {
+      alert("Please select some items first!");
+      return;
+    }
+
+    let total = 0;
+    let lines = ["Hi! I would like to order:", ""];
+
+    checked.forEach(function(box) {
+      let name = placeholder; // get name from our dataset *hint* we did this before
+      let price = parseFloat(box.dataset.price);
+      total = total + price;
+      lines.push(`• ${name} ($${price.toFixed(2)})`);
+    });
+
+    // push an empty line to lines, creating spacing before displaying the total
+    lines.push(`Total: $${total.toFixed(2)}`);
+    lines.push("Thank you!");
+
+    let textOrder = document.getElementById("text-order");
+    textOrder.value = lines.join("\n");
+    textOrder.style.display = "block";
+
+    document.getElementById("copy-btn").style.display = "block";
+  }
+
+  function copyOrder() {
+    let textOrder = placeholder; // get element by the ID 'text-order'
+    textOrder.select();
+    navigator.clipboard.writeText(textOrder.value).then(function() {
+      document.getElementById("copy-btn").textContent = "✓ Copied!";
+      setTimeout(function() {
+        document.getElementById("copy-btn").textContent = "Copy to Clipboard";
+      }, 2000);
+    });
+  }
+</script>
