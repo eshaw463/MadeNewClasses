@@ -1,0 +1,44 @@
+<!-- goal is to add this code to the end of your index.html after solving commented lines -->
+
+<div id="order-section">
+    <h2>Your Order</h2>
+    <div id="order-list">Nothing selected yet.</div>
+    <p>Total: <strong id="total">$0.00</strong></p>
+</div>
+
+
+
+<script>
+  let placeholder = 0
+  
+  
+  function updateOrder() {
+    let checked = placeholder; /*query document to select all 'input[type="checkbox"]:checked'*/
+    let orderList = document.getElementById("order-list");
+    let totalDisplay = placeholder; /* get element with ID 'total' from document*/
+
+    let total = 0;
+    let html = "";
+
+    if (placeholder === 1) { /* length of 'checked' is 0*/
+      html = "Nothing selected yet.";
+    } else {
+      checked.forEach(function(box) {
+        let name = box.dataset.name; 
+        let price = placeholder; /* get price in the same way name was found, encase it in parseFloat function*/
+        total = total + price;
+        html = html + "<div>" + name + " — $" + price.toFixed(2) + "</div>";
+      });
+    }
+
+    orderList.innerHTML = html;
+    totalDisplay.textContent = "$" + total.toFixed(2);
+  }
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(
+    function(box) {
+      box.addEventListener("change", updateOrder);
+    }
+  );
+  
+</script>
